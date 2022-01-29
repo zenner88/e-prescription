@@ -15,6 +15,8 @@
 #--------------------------------------------------------------------
 
 # CI_ENVIRONMENT = production
+CI_ENVIRONMENT = development
+
 
 #--------------------------------------------------------------------
 # APP
@@ -37,12 +39,12 @@
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = localhost
-# database.default.database = ci4
-# database.default.username = root
-# database.default.password = root
-# database.default.DBDriver = MySQLi
-# database.default.DBPrefix =
+database.default.hostname = localhost
+database.default.database = dhealth
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4
