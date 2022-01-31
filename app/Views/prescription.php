@@ -68,6 +68,17 @@
 					</button>
 				</div>
 				</div>
+				<div class="row mt-3">
+				<div class="col-2">
+					<label for="inputEmail4" class="form-label">Stock</label>
+				</div>
+				<div class="col-8" id="tempatObatStock">
+					
+				</div>
+				<div class="col-2 text-right">
+					
+				</div>
+				</div>
 			</div>
 			<div class="col-md-12 mt-3">
 			</div>
@@ -420,12 +431,18 @@
 	var table3 = $('#tableObat').DataTable();
 	$('#tableObat tbody').on( 'click', 'tr', function () {
 		var obatNon = table3.row(this).data() ;	
+		console.log(obatNon);
 		$('#tempatObat').append('<div id="obats"><div class="input-group"><input type="text" id="idvalObat" class="form-control" value="'+obatNon[1]+'" hidden><input type="text" id="valObat" class="form-control" value="'+obatNon[3]+'" disabled> <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" id="hapusObat"><i class="fa fa-times"></i></button></div></div>');
+		$('#tempatObatStock').append('<input type="text" id="stockObat" class="form-control" value="'+obatNon[4]+'" disabled>');
 		$('#modalObat').modal('hide'); 
-
+		var btObat = $('#valObat').val();
+		if (btObat != null){
+			$('#btn-obatnon').attr("disabled", true);
+		}
 		$('#hapusObat').on('click', function(){
 			$(this).parent().remove();
-			$('.btn-obatnon').removeClass('disabled');
+			$('#stockObat').parent().remove();
+			$('#btn-obatnon').removeAttr('disabled');
 		})		
 	} );
 
@@ -492,6 +509,21 @@
 
 	});	
 
+	// minus qty
+	$('#qtyNon').on('keyup', 'input', function () {
+		stok = obatNon[4];
+		var coins = $('#qtyNon').val();
+
+		$(idMirrors).text(coins);
+		var qtyBaru = qtyAwal - coins;
+		if (qtyBaru < 0){
+			alert("Stock tidak mencukupi!")
+			$(idQtyObats).val("");
+			$(idQtys).text(qtyAwal);
+		}else{
+			$(idQtys).text(qtyBaru);
+		}
+	})
 	// RACIKAN Fungsi Simpan 
 	$('#simpan').on('click', function(){
 

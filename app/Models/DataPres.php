@@ -17,4 +17,12 @@ class DataPres extends Model
 
         return $query->getResult();
     }
+    public function updateStockObat()
+    {
+        $data = array(
+            'stock' => 'Marketing'
+            );
+        $this->db->where('obatalkes_id', $id);
+        $this->db->update('obatalkes_m',$data);
+    }
 }
