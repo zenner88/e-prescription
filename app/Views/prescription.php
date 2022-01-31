@@ -51,7 +51,7 @@
 	<!-- Non Racikan  -->
 	<div class="container px-4 mt-3">
 	<div class="row gx-5">
-	<div class="col-md-6 col-sm-12 mt-3">
+	<div class="col-md-8 col-sm-12 mt-3">
 		<div class="p-3 card border-left-success bg-light">
 		<form class="row g-3">
 			<div class="col-md-12 mt-3">
@@ -63,7 +63,7 @@
 					
 				</div>
 				<div class="col-2 text-right">
-					<button type="button btn-success" id="btn-obatnon" class="btn btn-primary" data-toggle="modal" data-target="#modalObat">
+					<button type="button btn-success" id="btn-obatnon" class="btn btn-success" data-toggle="modal" data-target="#modalObat">
 					Pilih
 					</button>
 				</div>
@@ -80,7 +80,7 @@
 					
 				</div>
 				<div class="col-2 text-right">
-				<button type="button btn-success" id="btn-signanon" class="btn btn-primary" data-toggle="modal" data-target="#modalSigna">
+				<button type="button btn-success" id="btn-signanon" class="btn btn-success" data-toggle="modal" data-target="#modalSigna">
 				Pilih
 				</button>
 				</div>
@@ -109,7 +109,7 @@
 		</form>
 		</div>
 	</div>
-	<div class="col-md-6 col-sm-12 mt-3">
+	<div class="col-md-4 col-sm-12 mt-3">
 		<!-- KOSONG		 -->
 	</div>
 	</div>
