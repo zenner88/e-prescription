@@ -53,7 +53,7 @@
 	<div class="row gx-5">
 	<div class="col-md-8 col-sm-12 mt-3">
 		<div class="p-3 card border-left-success bg-light">
-		<form class="row g-3">
+		<form class="row g-3 nonRacikan">
 			<div class="col-md-12 mt-3">
 				<div class="row">
 				<div class="col-2">
@@ -92,7 +92,7 @@
 					<label for="inputEmail4" class="form-label">Qty</label>
 				</div>
 				<div class="col-10">
-					<input type="number" class="form-control" style="width: 100px">
+					<input type="number" id="qtyNon" class="form-control" style="width: 100px">
 				</div>
 				</div>
 				
@@ -420,7 +420,7 @@
 	var table3 = $('#tableObat').DataTable();
 	$('#tableObat tbody').on( 'click', 'tr', function () {
 		var obatNon = table3.row(this).data() ;	
-		$('#tempatObat').append('<div id=""><div class="input-group"><input type="text" id="valObat" class="form-control" value="'+obatNon[1]+'" hidden><input type="text" id="valObat" class="form-control" value="'+obatNon[3]+'" disabled> <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" id="hapusObat"><i class="fa fa-times"></i></button></div></div>');
+		$('#tempatObat').append('<div id="obats"><div class="input-group"><input type="text" id="idvalObat" class="form-control" value="'+obatNon[1]+'" hidden><input type="text" id="valObat" class="form-control" value="'+obatNon[3]+'" disabled> <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" id="hapusObat"><i class="fa fa-times"></i></button></div></div>');
 		$('#modalObat').modal('hide'); 
 
 		$('#hapusObat').on('click', function(){
@@ -434,7 +434,7 @@
 	$('#tableSigna tbody').on( 'click', 'tr', function () {
 		var signaNon = table4.row(this).data() ;
 		console.log(signaNon);	
-		$('#tempatSigna').append('<div id=""><div class="input-group"><input type="text" id="valSigna" class="form-control" value="'+signaNon[0]+'" hidden><input type="text" id="valObat" class="form-control" value="'+signaNon[1]+'" disabled> <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" id="hapusSigna"><i class="fa fa-times"></i></button></div></div>');
+		$('#tempatSigna').append('<div id=""><div class="input-group"><input type="text" id="idvalSigna" class="form-control" value="'+signaNon[0]+'" hidden><input type="text" id="valSigna" class="form-control" value="'+signaNon[1]+'" disabled> <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" id="hapusSigna"><i class="fa fa-times"></i></button></div></div>');
 		$('#modalSigna').modal('hide'); 
 
 		$('#hapusSigna').on('click', function(){
@@ -442,6 +442,55 @@
 			$('.btn-signanon').removeClass('disabled');
 		})		
 	} );
+
+	// NON-RACIKAN Fungsi Simpan 
+	$('#simpanNon').on('click', function(){
+	if ($('#valObat').val() == null){
+		$('#btn-obatnon').addClass("bg-danger");
+		$('#btn-obatnon').on('click', function(){
+			$('#btn-obatnon').removeClass("bg-danger");
+		})
+	}else if($('#valSigna').val() == null){
+		$('#btn-signanon').addClass("bg-danger");
+		$('#btn-signanon').on('click', function(){
+			$('#btn-signanon').removeClass("bg-danger");
+		})
+	}else if($('#qtyNon').val() == null){
+		$('#qtyNon').addClass("bg-danger");
+		$('#qtyNon').on('keyup', function(){
+			$('#qtyNon').removeClass("bg-danger");
+
+		})
+	}else{
+		alert ("SIMPAN");
+		var obatNama = $('#valObat').val();
+		var idobatNama = $('#idvalObat').val();
+		var obatSigna = $('#valSigna').val();
+		var idobatSigna = $('#idvalSigna').val();
+		var qtyNon = $('#qtyNon').val();
+
+		
+		var gabungNon = [
+			{
+				'obatNama' : obatNama,
+				'idobatNama' : idobatNama,
+				'obatSigna' : obatSigna,
+				'idobatSigna' : idobatSigna,
+				'qtyNon' : qtyNon,
+
+			}
+		];
+		$( '.nonRacikan' ).each(function(){
+			this.reset();
+		});
+		$('#valObat').parent().remove();
+		$('#valSigna').parent().remove();
+
+		console.log(JSON.stringify(gabungNon));
+
+	}
+
+	});	
 
 	// RACIKAN Fungsi Simpan 
 	$('#simpan').on('click', function(){
@@ -509,9 +558,6 @@
 		}
 
 	});	
-	function clearFormRacikan(){
-
-	}
 </script>
 </body>
 </html>
