@@ -510,20 +510,19 @@
 	});	
 
 	// minus qty
-	$('#qtyNon').on('keyup', 'input', function () {
-		stok = obatNon[4];
-		var coins = $('#qtyNon').val();
-
-		$(idMirrors).text(coins);
-		var qtyBaru = qtyAwal - coins;
-		if (qtyBaru < 0){
-			alert("Stock tidak mencukupi!")
-			$(idQtyObats).val("");
-			$(idQtys).text(qtyAwal);
-		}else{
-			$(idQtys).text(qtyBaru);
-		}
-	})
+	// $('#qtyNon').on('keyup', function () {
+	// 	var stok = obatNon[4];
+	// 	var coins = $('#qtyNon').val();
+	// 	console.log(stok);
+	// 	$('#qtyNon').text(coins);
+	// 	var qtyBarus = stok - coins;
+	// 	if (qtyBarus < 0){
+	// 		alert("Stock tidak mencukupi!")
+	// 		$('#qtyNon').val("");
+	// 	}else{
+	// 		$('#qtyNon').text(qtyBarus);
+	// 	}
+	// })
 	// RACIKAN Fungsi Simpan 
 	$('#simpan').on('click', function(){
 
